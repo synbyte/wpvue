@@ -1,8 +1,10 @@
 <template>
   
   <div id="app">
-    <header><div id="title">CL.Spider</div><nav></nav></header>
-   <button  @click="n++">Listing {{ n }}</button> 
+    <header><div id="title">CL.Spider</div><nav></nav></header><div class="navbar">
+   <button id="back"  @click="n++">BACK</button> 
+   <button id="next"  @click="n--">NEXT</button> 
+   </div>
    <h1>{{j[n][0].text}}</h1>
    <a :href="j[n][1].link"> Visit </a>
  <ul>
@@ -35,6 +37,10 @@ export default {
 </script>
 
 <style>
+:root {
+--bg:rgb(50,70,80);  
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300&display=swap');
 
 * {
@@ -43,21 +49,56 @@ export default {
 }
 body {
   margin:0 0 0 0px;
-  background: #FEFAde;
+  background: var(--bg);
+}
+
+#back {
+  border: none;
+ color: brown; 
+ margin:20px;
+ padding: 5px;
+ background: var(--bg);
+ text-shadow: 0 1px 2px black;
+ box-shadow:3px 2px 5px 2px rgba(255,255,255,0.13), -3px -2px 5px 2px rgba(0,0,0,0.3);
+}
+
+#next {
+  border: none;
+ color: brown; 
+ margin:20px;
+ background: var(--bg);
+ padding: 5px;
+ text-shadow: 0 1px 2px black;
+ box-shadow:3px 2px 5px 2px rgba(255,255,255,0.13), -3px -2px 5px 2px rgba(0,0,0,0.3);
+ transition:all .3s;
+}
+#next:active {
+  box-shadow:3px 2px 4px 0px rgba(255,255,255,0.13), -3px -2px 3px 0px rgba(0,0,0,0.3), -1px -1px 3px 0px rgba(0,0,0,0.3) inset, 1px 1px 3px 0px rgba(255,255,255,.13) inset;
+  transform: scale(0.95);
+  text-shadow: 0 7px 5px black;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  
+ text-shadow: 0 1px 2px black;
+  
 }
 header {
   font-family: 'Gemunu Libre', sans-serif;
   height: 2em;
   margin-bottom: 15px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 0px;
+  margin-right: 30vw;
   padding: 5px;
-  background: #FEFAde;
+  background: var(--bg);
  /*// background-image: linear-gradient(0deg,#DCDACF 10%,#fefaef 30%, white 80%);*/
-  box-shadow: 10px 3px 20px 5px rgba(0,0,0,0.25), -10px -3px 10px 7px rgba(255,255,255,1), 3px -1px 4px 2px rgba(0,0,0,0.25) inset;
-  border-bottom-left-radius:  15px;
+  box-shadow: 0px 3px 15px 5px rgba(255,255,255,0.13), -4px -1px 4px rgba(0,0,0,0.5) inset;
+  
+  
   border-bottom-right-radius:  15px;
-  border: 4px solid #fefaef;
+  
   border-top: 0;
   
 }
